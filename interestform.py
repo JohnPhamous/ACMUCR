@@ -1,4 +1,5 @@
-import openpyxl, getpass, os, time
+#!/usr/bin/env python3
+import openpyxl, os, time
 
 global counter
 global first_name
@@ -39,9 +40,18 @@ def userInput():
         signin_sheet['D' + str(counter)] = str(major).upper()
         counter += 1
 
+def finishScreen():
+    os.system('clear')
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print(("/------------------------------------------------------------------------------------------------\\").center(525))
+    print(("|                        Thanks for signing up. Hope to see you soon!                             |").center(525))
+    print(("\\------------------------------------------------------------------------------------------------/").center(525))
+
 while first_name != "exit":
     printHeader()
     userInput()
+    finishScreen()
+    time.sleep(2)
 
 signin.save("Orientation-8-4-16.xlsx")
 print("Sheet saved")
