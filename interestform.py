@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import openpyxl, os, time
+from colorama import Fore, Style
 
 global counter
 global first_name
@@ -20,11 +21,11 @@ def printHeader():
     os.system('clear')
     logo = "         ___       ______ .___  ___. \n        /   \     /      ||   \/   | \n       /  ^  \   |  ,----'|  \  /  | \n      /  /_\  \  |  |     |  |\/|  | \n     /  _____  \ |  `----.|  |  |  | \n    /__/     \__\ \______||__|  |__| \n UC Riverside Summer Orientation 8/4/2016"
     print("\n")
-    print("\n".join('{:^170}'.format(s) for s in logo.split("\n")))
-    print(("/------------------------------------------------------------------------------------------------\\").center(525))
-    print(("|  Hello! Thanks for showing interest in the Association of Computing Machinery at UC Riverside!  |").center(525))
-    print(("\\------------------------------------------------------------------------------------------------/").center(525))
-
+    print(Fore.BLUE + "\n".join('{:^170}'.format(s) for s in logo.split("\n")))
+    print((Fore.BLUE + "/------------------------------------------------------------------------------------------------\\").center(525))
+    print((Fore.RED + "|    Hello! Thanks for showing interest in the Association of Computing Machinery at UC Riverside!  |").center(525))
+    print((Fore.BLUE + "\\------------------------------------------------------------------------------------------------/").center(525))
+    print(Style.RESET_ALL)
 def userInput():
     global counter
     global first_name
@@ -43,14 +44,15 @@ def userInput():
 def finishScreen():
     os.system('clear')
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    print(("/------------------------------------------------------------------------------------------------\\").center(525))
+    print((Fore.BLUE + "     /------------------------------------------------------------------------------------------------\\").center(525))
     print(("|                        Thanks for signing up. Hope to see you soon!                             |").center(525))
     print(("\\------------------------------------------------------------------------------------------------/").center(525))
-
+    print(Style.RESET_ALL)
 while first_name != "exit":
     printHeader()
     userInput()
     finishScreen()
+    os.system('echo "\a\a\a\a"')
     time.sleep(2)
 
 signin.save("Orientation-8-4-16.xlsx")
